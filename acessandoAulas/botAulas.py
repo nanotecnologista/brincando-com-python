@@ -10,18 +10,10 @@ import os
 
 #Descobrindo o dia da semana
 dataHoje = datetime.today().isoweekday()
-
 #Capturando a hora atual
 hora = (datetime.today().time())
 horaAtual = hora.strftime('%H:%M')
 
-# #chamando a matéria
-# def aula_Arquitetura(browser):
-#     return 0.0
-# def aula_Metodologia(browser):
-#     return 0.0
-# def aula_Laboratorio(browser):
-#     return 0.0
 
 def start():
 #configurando o navegador
@@ -49,21 +41,25 @@ def start():
 
     #passando link do site
     #Se o dia e a hora forem iguais ao horário da aula...
-    if dataHoje == 2 and horaAtual >= "20:20":
+    if dataHoje == 1 and horaAtual >= "20:20":
         browser.get("https://conferenciaweb.rnp.br/webconf/flaviamsn")
-        #aula_Arquitetura(browser)
-        input("digite ok")
+        login_button = browser.find_element_by_xpath("//input[@name='commit']")
+        login_button.click()
            
-    elif dataHoje == 3 and horaAtual >= "19:30":
+    elif dataHoje == 2 and horaAtual >= "19:30":
         browser.get("https://conferenciaweb.rnp.br/webconf/simone-amorim")
-        #aula_Metodologia(browser)
-        input("passou aqui")
-            
-    elif dataHoje == 4:
-        if horaAtual >= "18:40" and horaAtual <= "20:20":
+        login_button = browser.find_element_by_xpath("//input[@name='commit']")
+        login_button.click()
+
+       
+    elif dataHoje == 6:
+        if horaAtual >= "00:00":
             browser.get("http://meet.google.com/wrz-zbjk-jnn")
-            #aula_Laboratorio(browser)
-            input("digite ok")
+            login_button = browser.find_element_by_xpath('//*[@id="yDmH0d"]')
+            time.sleep(20)
+            login_button.click()
+
+            input("aqui")
 
     input("tá aqui")
 
