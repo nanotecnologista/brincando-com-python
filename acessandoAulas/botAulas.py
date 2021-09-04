@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 from datetime import datetime, time
+from time import sleep  # lib tempo
 import os
 
 
@@ -41,28 +42,28 @@ def start():
 
     #passando link do site
     #Se o dia e a hora forem iguais ao horário da aula...
-    if dataHoje == 1 and horaAtual >= "20:20":
+    if dataHoje == 2 and horaAtual >= "20:20":
         browser.get("https://conferenciaweb.rnp.br/webconf/flaviamsn")
         login_button = browser.find_element_by_xpath("//input[@name='commit']")
+        sleep(10)
         login_button.click()
            
     elif dataHoje == 2 and horaAtual >= "19:30":
         browser.get("https://conferenciaweb.rnp.br/webconf/simone-amorim")
         login_button = browser.find_element_by_xpath("//input[@name='commit']")
+        sleep(10)
         login_button.click()
 
        
-    elif dataHoje == 6:
-        if horaAtual >= "00:00":
+    elif dataHoje == 3:
+        if horaAtual >= "16:40" and horaAtual <= "20:20":
             browser.get("http://meet.google.com/wrz-zbjk-jnn")
-            login_button = browser.find_element_by_xpath('//*[@id="yDmH0d"]')
-            time.sleep(20)
+            sleep(20)
+            login_button = browser.find_element_by_xpath("//*[contains(text(),'Pedir para participar')]")
             login_button.click()
-
             input("aqui")
 
     input("tá aqui")
-
 start()
             
     
